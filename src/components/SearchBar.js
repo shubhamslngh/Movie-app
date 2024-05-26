@@ -23,9 +23,9 @@ const handleSubmit = (e) => {
         placeholder="Search movies..."
         value={query}
         onChange={handleChange}
-        className="border border-gray-300 rounded-lg p-2"
+        className="border align-middle border-red-700 rounded-lg p-2"
       />
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 ml-2 rounded-lg">
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 ml-2 rounded-md">
         Search
       </button>
     </form>

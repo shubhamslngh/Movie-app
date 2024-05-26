@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import FavoriteMovies from './pages/FavoriteMovies';
 import SearchBar from './components/SearchBar';
@@ -16,10 +16,10 @@ const App = () => {
     <Router>
       <nav className="bg-black p-4 flex justify-between items-center">
         <div>
-          <Link to="/" className="text-white rounded-md bg-red-800 p-4 mr-4">Movies</Link>
-          <Link to="/favorites" className="text-white">Favorites</Link>
+          <NavLink to="/" className="text-white hover:bg-sky-700  rounded-md p-4 mr-4" activeClassName="bg-red-400">Movies</NavLink>
+          <NavLink to="/favorites" className="text-white hover:bg-sky-700 rounded-md p-4 mr-4 " activeClassName="bg-red-500">Favorites</NavLink>
         </div>
-        <SearchBar onSearch={handleSearch} />
+        {/* <SearchBar onSearch={handleSearch} /> */}
       </nav>
       <Routes>
         <Route exact path="/" element={<MovieList searchQuery={searchQuery} />} />
