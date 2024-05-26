@@ -36,7 +36,7 @@ const MovieList = () => {
         placeholder="Search movies..."
         value={searchQuery}
         onChange={handleSearch}
-        className="p-2 my-4 border bg-grey-300 text-white border-red-300 shadow-lg rounded-md"
+        className="p-2 resize my-8 font-extrabold w-full  bg-white text-black border-red-800 shadow-lg rounded-md"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredMovies.map((movie) => (

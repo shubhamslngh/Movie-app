@@ -46,15 +46,18 @@ const MovieCard = ({ movie }) => {
     <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 cursor-pointer" onClick={() => window.open(movie.imdb_url, '_blank')}>
       <img src={movie.image} alt={movie.title} onError={handleImageError} />
       <div className="px-6 flex-wrap place-content-evenly py-4">
-        <div className="font-bold text-xl mb-2">{movie.movie}</div>
-        <div className="text-gray-700 text-base">
-          <FontAwesomeIcon icon={starIcon} className={`scale-2 text-${isFavorite ? 'yellow' : 'yellow'}-500`} />Rating: {(movie.rating)}/10
+       <div className="font-semibold text-auto mb-2 h-16 overflow-hidden">
+  {movie.movie}
+</div>
+
+        <div className="text-gray-700 font-semibold">
+          Rating:<FontAwesomeIcon icon={starIcon} size="md" className={`scale-2 text-${isFavorite ? 'yellow' : 'yellow'}-500`} /> {(movie.rating)}/10
         </div>
         <button
           className="mt-4 px-4 py-2 rounded bg-transparent"
           onClick={handleFavoriteClick}
         >
-          <FontAwesomeIcon icon={starIcon} className={`text-${isFavorite ? 'yellow' : 'gray'}-500`} />
+          <FontAwesomeIcon icon={starIcon} size="2xl" className={`text-${isFavorite ? 'yellow' : 'gray'}-500`}  />
         </button>
       </div>
     </div>

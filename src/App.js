@@ -1,28 +1,32 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import FavoriteMovies from './pages/FavoriteMovies';
-import SearchBar from './components/SearchBar';
 import './App.css';
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [isNavSticky, setNavSticky] = useState(false);
 
-  const handleSearch = (query) => {
-    setSearchQuery(query);
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setNavSticky(true);
+    } else {
+      setNavSticky(false);
+    }
   };
+
+  window.addEventListener('scroll', handleScroll);
 
   return (
     <Router>
-      <nav className="bg-black p-4 flex justify-between items-center">
+      <nav className={`bg-black p-4 text-white flex justify-between items-center ${isNavSticky ? 'sticky top-0 ' : ''}`}>
         <div>
-          <NavLink to="/" className="text-white hover:bg-sky-700  rounded-md p-4 mr-4" activeClassName="bg-red-400">Movies</NavLink>
-          <NavLink to="/favorites" className="text-white hover:bg-sky-700 rounded-md p-4 mr-4 " activeClassName="bg-red-500">Favorites</NavLink>
+          <Link to="/" className="rounded-md p-4 mr-4 ">Movies</Link>
+          <Link to="/favorites" className="rounded-md p-4 mr-4">Favorites</Link>
         </div>
-        {/* <SearchBar onSearch={handleSearch} /> */}
       </nav>
       <Routes>
-        <Route exact path="/" element={<MovieList searchQuery={searchQuery} />} />
+        <Route exact path="/" element={<MovieList />} />
         <Route path="/favorites" element={<FavoriteMovies />} />
       </Routes>
     </Router>
