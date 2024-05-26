@@ -6,8 +6,8 @@ const FavoriteMovies = () => {
   const favorites = useSelector((state) => state.movies.favorites);
 
   return (
-    <div className="favorite-movies">
-      {favorites.length === 0 && <p>No favorite movies.</p>}
+    <div className="flex flex-wrap justify-center p-5">
+      {favorites.length === 0 && <p className="text-center w-full">No favorite movies.</p>}
       {favorites.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}

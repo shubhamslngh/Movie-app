@@ -11,18 +11,24 @@ const MovieCard = ({ movie }) => {
     e.stopPropagation(); // Prevent triggering the click event on the movie card
     dispatch(toggleFavorite(movie));
   };
-     const handleImageError = (e) => {
-    e.target.src = 'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg.jpg'; // Path to your fallback image
+
+  const handleImageError = (e) => {
+    e.target.src = 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ioUPyn34M7Hc/v0/-1x-1.jpg'; // Path to your fallback image
   };
 
   return (
-    <div className="movie-card" onClick={() => window.open(movie.imdb_url, '_blank')}>
-    <img src={movie.image} alt={movie.title} onError={handleImageError} />
-      <h3>{movie.movie}</h3>
-      <p>Rating: {movie.rating}</p>
-      <button onClick={handleFavoriteClick}>    
-        {isFavorite ? 'Unfavorite' : 'Favorite'}
-      </button>
+    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 cursor-pointer" onClick={() => window.open(movie.imdb_url, '_blank')}>
+      <img className="w-full" src={movie.image} alt={movie.movie} onError={handleImageError} />
+      <div className="px-6 flex-wrap place-content-evenly py-4">
+        <div className="font-bold text-xl mb-2">{movie.movie}</div>
+        <p className="text-gray-700 text-base">Rating: {movie.rating}</p>
+        <button
+          className={`mt-4 px-4 py-2 rounded ${isFavorite ? 'bg-red-500 text-white' : 'bg-blue-500 text-white'}`}
+          onClick={handleFavoriteClick}
+        >
+          {isFavorite ? 'Unfavorite' : 'Favorite'}
+        </button>
+      </div>
     </div>
   );
 };
